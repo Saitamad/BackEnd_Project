@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Character</title>
+
+    <!-- ///// Style Sheets Section /////  -->
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- Login/Signup Form CSS -->
+    <link rel="stylesheet" href="/stylesheets/form.css">
+    <!-- Character Select CSS -->
+    <link rel="stylesheet" href="/stylesheets/charselect.css">
+    <!-- Game Rendering CSS -->
+    <link rel="stylesheet" href="/stylesheets/arena.css">
+    <!-- Character animations Rendering CSS -->
+    <link rel="stylesheet" href="/stylesheets/fightanimations.css">
+    <!-- Fight Menu Rendering CSS -->
+    <link rel="stylesheet" href="/stylesheets/fightArena.css">
+
+
+    <div class="signInDiv" id ="loginContainer" style="display: none;">
+
+        <h1 id="loginHeader" style="display: none;">LogIn</h1>
+        <h1 id="signUpHeader" style="display: none;">Sign Up</h1>
+    
+        <input id="username" type="text" placeholder="username"></input>
+        <input id="password" type="password" placeholder="password"></input>
+          
+        <br>
+    
+        <button id="signInBtn" style="display: none;">Sign In</button>
+        <button id="signUpBtn"style="display: none;">Sign Up</button>
+    </div>
+    
+    
+    <div class="createParty" id ="createParty" style="display:none;">
+    
+    <div class="createSquad" id ="createSquad" >
+      <h1 id="newGameHeader" >New Squad</h1>
+      <input id="hostName" type="text" placeholder="Player Name"></input>
+      <br>
+      <button id="createBtn">Create Squad</button>
+    </div>
+    
+    
+    <div class="joinSquad" id ="joinSquad">
+      <h1 id="joinGameHeader">Join Squad</h1>
+      <input id="guestName" type="text" placeholder="Player Name"></input>
+      <br>
+      <input id="roomID" type="text" placeholder="roomID"></input>
+      <br>
+      <button id="joinBtn">Join Squad</button>
+    </div>
+    </div>
+    
+    <br>
+    
+    <div id= "messageScreen" style="display: none;">
+        <div class="message" id="message">  </div>
+    </div>
+    
+    <div id="btnContainer" style="display: none;">
+      <button id="launchGameBtn" style="display: none;">Start Battle</button>
+      <button id="goToRoomBtn" style="display: none;">Ok</button>
+    </div>
+
+    <div class="playerChoice" id="boxContainer" style="display: none;">
+        <div id="Aerith">
+            <a href="#" onclick="game.callCharacter('Aerith', Aerith)">
+            <img src="/images/characters/thumbs/Aerith.png" alt="Aerith"></a>
+            
+            <h3>Aerith Gainsborough</h3>
+            <p>
+                <br> Weapon : Rod
+                <br> Class : Magician
+                <br> Limit break type : Heal Wind
+            </p>    
+        </div>
+    
+        <div id="Cloud">
+            <a href="#" onclick="gameManager.spawnPlayer('Cloud')">
+            <img src="/images/characters/thumbs/Cloud.png" alt="Cloud"></a>
+            
+            <h3>Cloud Strife</h3>
+        
+            <p>
+                <br> Weapon : Sword
+                <br> Class : Mercenary
+                <br> Limit break type : Omnislash
+            </p>  
+        </div>
+    
+        <div id="RedXIII">
+            <a href="#" onclick="gameManager.spawnPlayer('RedXIII')">
+            <img src="/images/characters/thumbs/RedXIII.png" alt="RedXIII"></a>
+            
+            <h3>Red XIII</h3>
+            <p>
+                <br> Weapon : HeadDress
+                <br> Class : Beast
+                <br> Limit break type : Cosmo Memory
+            </p>  
+        </div>
+        
+    
+        <div id="Tifa">
+            <a href="#" onclick="gameManager.spawnPlayer('Tifa')">
+            <img src="/images/characters/thumbs/Tifa.png" alt="Tifa"></a>
+            
+            <h3>Tifa Lockhart</h3>
+        
+            <p>
+                <br> Weapon : Gloves
+                <br> Class : Warrior
+                <br> Limit break : Final Heaven
+            </p>  
+        </div>
+    
+    
+        <div id="Vincent">
+            <a href="#" onclick="gameManager.spawnPlayer('Vincent')">
+            <img src="/images/characters/thumbs/Vincent.png" alt="Vincent"></a>
+            
+            <h3>Vincent Valentine</h3>
+        
+            <p>
+                <br> Weapon : Gun
+                <br> Class : Monk
+                <br> Limit break : Chaos - Heavy Attack on one enemy
+            </p>  
+        </div>
+    
+    
+        <div id="Barret">
+            <a href="#" onclick="gameManager.spawnPlayer('Barret')">
+            <img src="/images/characters/thumbs/Barret.png" alt="Barret"></a>
+            
+            <h3>Barret Wallace</h3>
+        
+            <p>
+                <br> Weapon : Gun - arm
+                <br> Class : Warrior
+                <br> Limit break : Catastrophe
+            </p>  
+        </div>
+    
+    
+        <div id="Sephitoth">
+            <a href="#" onclick="gameManager.spawnPlayer('Sephitoth')">
+            <img src="/images/characters/thumbs/Sephiroth.png" alt="Sephitoth"></a>
+            
+            <h3>Sephitoth</h3>
+        
+            <p>
+                <br> Weapon : Long Sword
+                <br> Class : Elite Palladin
+                <br> Limit break : One Winged Angel
+            </p>  
+        </div>
+    
+        <div id="Yuffie">
+            <a href="#" onclick="gameManager.spawnPlayer('Yuffie')">
+            <img src="/images/characters/thumbs/Yuffie.png" alt="Yuffie"></a>
+            
+            <h3>Yuffie Kisaragi</h3>
+        
+            <p>
+                <br> Weapon : Shuriken
+                <br> Class : Rogue
+                <br> Limit break :  All Creation 
+            </p>  
+        </div>
+    
+        <div id="Cait_Sith">
+            <a href="#" onclick="gameManager.spawnPlayer('Cait_Sith')">
+            <img src="/images/characters/thumbs/Cait-Sith.png" alt="Cait -Sith"></a>
+            
+            <h3>Cait Sith</h3>
+        
+            <p>
+                <br> Weapon : Megaphone
+                <br> Class : Druid
+                <br> Limit break : Dice Game 
+            </p>  
+        </div>
+    </div>
+
+    <div id="arena" style="display: none;">
+
+        <div id="header">
+            <div id="inBattleMessage" style="display: none;"></div>
+        </div>
+    
+        <div id="players">
+            <div id="player1"></div>
+            <div id="player2"></div>
+        </div>
+    
+        <div id="opponents">
+            <div id="opponent1"></div>
+            <div id="opponent2"></div>
+    
+        </div>
+    
+        <br>
+        <br>
+    
+        <div class="fightMenu" id="fightMenu" style="display: none;">
+    
+            <div id="playerInfo">
+    
+                <div id="hostInfos">
+                    <img id="hostavatar" img src="https://via.placeholder.com/80" width="40" height="40"></img>
+                    <br>
+                <div id="playerName">Host Name</div>
+                <progress id="atbGauge" value="0" max="100"></progress>
+                </div>
+    
+                <div id="guestInfos">
+                    <img id="guestavatar" img src="https://via.placeholder.com/80" width="40" height="40"></img>
+                    <br>
+                <div id="invitedName">Guest Name</div>
+                <progress id="atbGauge" value="0" max="100"></progress>
+                </div>
+    
+            </div>
+            
+            <div id="commands" style="display: none;">
+              <button id="attack" class="turn" onclick="attackalert()">Attack</button>
+              <button id="magic" class="turn">Magic</button>
+              <button id="guard" class="turn">Guard</button>
+              <button id="heal" class="turn">Heal</button>
+            </div>
+    
+            <div id="status">
+    
+                <div class="hostMenus" id="hostStatus">
+                    <div id="hhpBar">HP 
+                        <progress id="healthPoints" value="100" max="100"></progress>
+                        <input class="inputValue" id="hhpBarValue" type="text" placeholder="300"></input>
+                        <input class="inputValue" id="maxhhpBarValue" type="text" placeholder="/300"></input>
+                        
+                    </div>
+                    
+    
+                    <div id="hmpBar"> MP
+                        <progress id="magicPoints" value="50" max="50"></progress>
+                        <input class="inputValue" id="hmpBarValue" type="text" placeholder="300"></input>
+                        <input class="inputValue" id="maxhmpBarValue" type="text" placeholder="/300"></input>
+                    </div>  
+    
+    
+                    <div id="hlbBar"> LB
+                        <progress id="limitBreak" value="0" max="100"></progress>
+                        <input class="inputValue" id="hlbBarValue" type="text" placeholder="300"></input>
+                        <input class="inputValue" id="maxhlbBarValue" type="text" placeholder="/300"></input>
+                    
+                    </div>
+                </div>
+    
+                <div id="guestStatus">
+    
+                    <div id="ghpBar"> HP 
+                        <progress id="healthPoints" value="100" max="100"></progress>
+                        <input class="inputValue" id="ghpBarValue" type="text" placeholder="300"></input>
+                        <input class="inputValue" id="maxghpBarValue" type="text" placeholder="/300"></input>
+                        
+                    </div>
+                    
+    
+                    <div id="gmpBar"> MP
+                        <progress id="magicPoints" value="50" max="50"></progress>
+                        <input class="inputValue" id="gmpBarValue" type="text" placeholder="300"></input>
+                        <input class="inputValue" id="maxgmpBarValue" type="text" placeholder="/300"></input>
+                    </div>  
+    
+    
+                    <div id="glbBar"> LB
+                        <progress id="limitBreak" value="0" max="100"></progress>
+                        <input class="inputValue" id="glbBarValue" type="text" placeholder="300"></input>
+                        <input class="inputValue" id="maxglbBarValue" type="text" placeholder="/300"></input>
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+    
+           
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.min.js"></script>
+      <script src="/javascripts/main.js"> </script>
+
+  </body>
+</html>
