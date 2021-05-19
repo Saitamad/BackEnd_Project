@@ -6,7 +6,7 @@ console.log('server ready !');
     const path = require('path');
     const ejs = require('ejs');
     const gameApp = require('./gameApp');
-const { Socket } = require('dgram');
+    const { Socket } = require('dgram');
     const app = express();
     const server = require('http').createServer(app);
     const io = require("socket.io")(server);   
@@ -32,12 +32,12 @@ const { Socket } = require('dgram');
     });
 
     app.get("/", function(req, res) {
-        res.render("arena");
-        });
+    res.render("arena");
+    });
 
     app.get("/", function(req, res) {
-            res.render("room");
-            });
+    res.render("room");
+    });
 
     // route for client files 
     app.use(express.static('public'));
@@ -147,6 +147,7 @@ let gameState = {};
 let userRooms = {};
 let numUser = 0;
 
+
     // launch Socket.io //
 
 io.sockets.on('connection', function(socket){
@@ -187,72 +188,45 @@ io.sockets.on('connection', function(socket){
     // Create a new Room  and a random room ID
     socket.on("createSquad",function(data){
         userRooms[socket.id] = roomID;
-        socket.emit('newGame', {roomID:roomID});
+        socket.emit('newGame', {name:data.name, roomID:roomID});
         socket.number = 1;
         console.log(roomID);
         
     });
 
-/*
-    socket.on("join", function(roomID){
-    const room = io.sockets.adapter.rooms[roomID];
-
-    let users;
-    if (room) {
-      users = room.sockets; 
-    }
-
-    
-    if (users) {
-        numUser = Object.keys(users).length;
-    }
-
-    if (numUser === 0) {
-      socket.emit('wrongID');
-    } else if (numUser > 1) {
-      socket.emit('roomIsFull');
-    }
-
-    userRooms[socket.id] = roomID;
-
-    socket.join(roomID);
-    socket.number = 2;
-    io.in(roomID).emit('onReady', 2);
-  });
-  */
-
-
 
     // Users Management 
     socket.on('join',function(data){
+
         // reject 3rd player
         socket.join(roomID);
         users.push(data);
         userNum ++;
         console.log(userNum);
         console.log(roomID);
-        //socket.emit('checkPlayers');
+
     });
 
-    socket.on('squadIdSent', function(){
-        socket.emit('waitingForGuest');
+    socket.on('squadIdSent', function(data){
+        socket.emit('waitingForGuest', {name:data.name, room:roomID});
     })
 
     socket.on('joined',function(data){
         // reject 3rd player
-
-        if(userNum >2) {
-            socket.emit('roomIsFull',{name:data.name, room:roomID}); 
-            console.log('Room is Full');
-        } else 
-        if (userNum <=2){
-            socket.join(roomID);
-            users.push(data);
-            userNum ++;
-            io.in(roomID).emit('onReady',{name:data.name, room:roomID});
-            console.log('player added')
-            console.log(roomID);
-        } 
+            if(userNum >2) {
+                socket.emit('roomIsFull',{name:data.name, room:roomID}); 
+                console.log('Room is Full');
+            } else 
+            if (userNum <=2 && data.room == roomID){
+                socket.join(roomID);
+                users.push(data);
+                userNum ++;
+                io.in(roomID).emit('onReady',{name:data.name, room:roomID});
+                console.log('player added')
+                console.log(roomID);
+            } else {
+            socket.emit('wrongRoomId', {name:data.name, room:roomID});
+        }
 
         console.log(userNum); 
         console.log(users);
@@ -261,13 +235,16 @@ io.sockets.on('connection', function(socket){
     socket.on('playerReadyToBattle', function(data){
         ready++
         if (ready == 2){
-            io.emit('loadArena',{name:data.name, room:roomID});
+            io.in(roomID).emit('loadArena',{name:data.name, room:roomID});
         }
     })
 
-    // socket.on('launchATB', function(timestamp){
-
-   //x@x@ })
+    socket.on('startBattle', function(data){
+        ready++
+        if (ready == 4){
+            io.in(roomID).emit('loadCommands',{name:data.name, room:roomID});
+        }
+    })
 
     socket.on('disconnect',function(){
         delete sockets[socket.id];
