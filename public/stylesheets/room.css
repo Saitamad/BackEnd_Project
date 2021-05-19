@@ -1,0 +1,35 @@
+#usersContainer {
+    display: none;
+    background: #0303037e;
+    justify-items: center;
+    align-items: center;
+    width: auto;
+    margin: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#usersRoom {
+    display: flex;
+    flex-wrap : wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-items: baseline;
+    color: ivory;
+  }
+  
+  .usersRoom div {
+    width: 400px;
+    height: 400px;
+    justify-content: center;
+    align-items: baseline;
+    color: white;
+  }
+  
+  .usersRoom h3 {
+    width: auto;
+  } 

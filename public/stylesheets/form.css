@@ -1,0 +1,116 @@
+
+  .signInDiv{
+    display: none;
+  }
+
+  #loginContainer{
+  width: 20%;
+  height: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000a8;
+  border-radius: 7px;
+  text-align: center;
+  }
+
+  #loginHeader{
+    text-align: center;
+    color: ivory;
+  }
+
+  #signUpHeader{
+    text-align: center;
+    color: ivory;
+  }
+
+
+  #createParty {
+    width: auto;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #createSquad{
+    width: 20%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000a8;
+    border-radius: 7px;
+    text-align: center;
+    }
+  
+  #newGameHeader{
+      text-align: center;
+      color: ivory;
+      resize: both;
+  }
+  #hostName{
+    resize: both;
+  }
+
+  #joinSquad{
+    width: 20%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000a8;
+    border-radius: 7px;
+    text-align: center;
+    }
+
+  #joinGameHeader{
+    text-align: center;
+    color: ivory;
+  }   
+
+  #messageScreen{
+    width: 60%;
+    height: 150px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000a8;
+    border-radius: 7px;
+    text-align: center;
+    color: ivory;
+    }
+
+  #btnContainer{
+    width: 60%;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000a8;
+    border-radius: 7px;
+  }
+
+  #launchGameBtn{
+    margin: auto;
+    position: absolute;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+
+

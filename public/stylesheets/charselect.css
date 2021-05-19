@@ -1,0 +1,47 @@
+#boxContainer{
+  display: none;
+  background: #0303037e;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  height: auto;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.playerChoice {
+  display: flex;
+  flex-wrap : wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  color: ivory;
+}
+
+.playerChoice div {
+  width: 400px;
+  height: 400px;
+  justify-content: center;
+  align-items: baseline;
+  color: white;
+}
+
+.playerChoice h3 {
+  width: auto;
+} 
+
+#roomMessage{
+  width: 100%;
+  height: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000a8;
+  border-radius: 7px;
+  text-align: center;
+  color: ivory;
+  }
