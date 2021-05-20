@@ -111,6 +111,21 @@ let select = 1;
 let frame = 0;
 let playerSprites;
 
+//Load Images
+
+
+let Barret = new Image();
+    Barret.src = "../images/characters/Barret/idle.png";
+
+let Caith_Sith = new Image();
+    Caith_Sith.src = "../images/characters/Caith_Sith/idle.png";
+
+// player slots constructors
+function PlayerSlot(username, playerNum, userRole) {
+    this.username = username;
+    this.playerNum = playerNum;
+    this.userRole = userRole;
+}
 
 // Display Login Modal
 const showLogIn = function(){
@@ -149,7 +164,7 @@ const attackalert = function (data){
 } 
 
 playerSelect = function(){
-    document.body.style.backgroundImage ="url('../images/scenes/10028.jpg')";
+    document.body.style.backgroundImage ="url('/images/arenas/Backgrounds/battle_bg_0162_01.jpg')";
     document.body.style.backgroundColor = "black";
     loginContainer.style.display = "none";
     header.style.display = "none";
@@ -158,6 +173,7 @@ playerSelect = function(){
     messageScreen.style.display = "none";
     launchGameBtn.style.display ="none";
     arena.style.display = "block";
+    //arena.style.backgroundImage = "url('/images/arenas/Backgrounds/battle_bg_0162_01.jpg')";
     inBattleMessage.style.display = "block"
     fightMenu.style.display = "flex";
 }
@@ -385,7 +401,7 @@ class gameLogic{
   loadArena(){
 
     // Load Layout //
-    document.body.style.backgroundImage ="url('../images/scenes/10028.jpg')";
+    document.body.style.backgroundImage ="url('../images/scenes/10029.jpg')";
     document.body.style.backgroundColor = "black";
     
     boxContainer.style.display = "none";
@@ -549,10 +565,10 @@ function spritesLoader(sprite, data){
   playerSprites = sprite;
       if (userRole == 'host'){
         // loadsprites for Host
-        player1Div.style.backgroundImage = 'url(/images/characters/'+playerSprites+'/ills.png)';
+        player1Div.style.backgroundImage = 'url(/images/characters/'+playerSprites+ '/'+ playerSprites+'/ills.png)';
     } else {
         // load sprites for Guest
-        opponent1Div.style.backgroundImage = 'url(/images/characters/'+playerSprites+'/ills.png)';
+        opponent1Div.style.backgroundImage = 'url(/images/characters/'+playerSprites+'/'+ playerSprites+'/ills.png)';
     }
     console.log(sprite)
 }
@@ -561,11 +577,8 @@ socket.on ('getPlayer', function(data){
   if (userRole == 'guest'){
     attacker = data.name;
     opponent = opponentName;
-    alert (attacker + ' host player is in the place');
+    alert (attacker + ' host player is in the place opponent is' + opponent);
   }
-    alert(attacker + ' attacker');
-    //alert(playerName + ' playerName');
-    //alert(opponent + '  is opponent');
     socket.emit('sendName', {pName:data.name})
 });
 
@@ -573,19 +586,16 @@ socket.on ('getOpponent', function(data){
   if (userRole == 'host'){
     opponent = data.name;
     attacker = playerName;
-    alert (opponent + ' guest player is in the place');
+    alert (opponent + ' guest player is in the place opponent is' + attacker);
   } 
-    //alert(attacker + ' attacker');
-    //alert(playerName + ' playerName');
-    alert(opponent + '  is opponent');
     socket.emit('sendName', {opName:data.name})
 });
 
 socket.on('shareNames', function(data){
   if (userRole == 'host'){
-  alert('host playing with ' + playerName + ' and guest with ' + data.opName);
+  alert('you are playing with ' + playerName + ' and guest with ' + data.opName);
  } else{
-  alert('host playing with ' + data.pName + ' and guest with ' + 'test');
+  alert('you are playing with ' + opponentName + ' and guest with ' + data.pName );
  }
 });
 
@@ -809,3 +819,5 @@ function endGame(data){
     return
   }
 };
+
+
