@@ -327,7 +327,7 @@ socket.on('onReady',function(data){
 
 socket.on('playerInfos', function(data){
     character = data.name;
-    alert('to play attack it is good !' + character)
+    //alert('to play attack it is good !' + character)
 });
 
 launchGameBtn.addEventListener('click', function(data){
@@ -359,16 +359,6 @@ socket.on('updateGauges', function(data){
   game.updateDamages(damg);
   
 })
-
-
-/*
-:::::::::::::::::::
-:                 :
-:/ GAME LOGIC  /:
-:                 :
-:::::::::::::::::::
-*/
-
 
 
 /*
